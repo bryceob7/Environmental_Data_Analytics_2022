@@ -1,7 +1,9 @@
 ---
-title: "Assignment 1: Introduction"
+title: 'Assignment 1: Introduction'
 author: "Student Name"
-output: pdf_document
+output:
+  word_document: default
+  pdf_document: default
 geometry: margin=2.54cm
 ---
 
