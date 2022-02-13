@@ -60,6 +60,10 @@ Exercise: build your own scatterplots of PeterPaul.chem.nutrients
 # Color your points by year, and facet by lake in two rows.
 # Change the ylab name
 
+ggplot(filter(PeterPaul.chem.nutrients, depth == 0)) + 
+  geom_point(aes(x = daynum, y = temperature_C, color = year4)) + 
+  facet_wrap('lakename') +
+  ylab('Temperature(C)')
 
 #2. 
 # Plot temperature by date. Color your points by depth.
@@ -67,6 +71,9 @@ Exercise: build your own scatterplots of PeterPaul.chem.nutrients
 # Change the color palette to magma and play with direction (+- 1), which one makes more sense?
 # Change x axis to include marker/labels every 5 years
 
+ggplot(PeterPaul.chem.nutrients) +
+  geom_point(aes(x = sampledate, y = temperature_C, color = depth)) +
+  
 
 
 
@@ -111,7 +118,7 @@ The following graph displays the counts of specific endpoints measured in neonic
 3. Adjust the x axis labels so they appear at a 45 degree angle. 
 4. Change the color and/or border on the bars. Should you have a consistent color across all bars, or a different color for each bar?
 ```{r}
-
+getwd()
 Neonics <- read.csv("./Data/Raw/ECOTOX_Neonicotinoids_Insects_raw.csv")
 ggplot(Neonics) +
   geom_bar(aes(x = Endpoint))

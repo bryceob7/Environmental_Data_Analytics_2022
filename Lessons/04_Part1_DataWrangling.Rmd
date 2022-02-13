@@ -110,16 +110,20 @@ NTL.phys.data.JunethruOctober4 <- filter(NTL.phys.data, daynum %in% c(152:304))
 # Exercise: 
 # filter NTL.phys.data for the year 1999
 # what code do you need to use, based on the class of the variable?
-class(NTL.phys.data$year4)
+NTL.phys.data.1999 <- filter(NTL.phys.data, year4 == 1990)
+NTL.phys.data.1999
+dim(NTL.phys.data.1999)
 
 # Exercise: 
 # filter NTL.phys.data for Tuesday Lake from 1990 through 1999.
-
-
+NTL.phys.data.Tuesday <- filter(NTL.phys.data, lakename == "Tuesday Lake")
+NTL.phys.data.Tuesday
+NTL.phys.data.Tuesday.90.to.99 <- filter(NTL.phys.data.Tuesday, year4 >= 1990 & year4 <= 1999)
+NTL.phys.data.Tuesday.90.to.99
 ```
 Question: Why don't we filter using row numbers?
 
-> Answer: 
+> Answer: Rows are arbitrary!
 
 ### Arrange
 
@@ -133,7 +137,9 @@ NTL.phys.data.depth.descending <- arrange(NTL.phys.data, desc(depth))
 # Arrange NTL.phys.data by temperature, in descending order. 
 # Which dates, lakes, and depths have the highest temperatures?
 
-
+NTL.phys.data.temp.descending <- arrange(NTL.phys.data, desc(temperature_C))
+head(NTL.phys.data.temp.descending)
+#East Long Lake, sampled on July 7, 1998 at a depth of 0.5 meters
 ```
 ### Select
 
@@ -167,6 +173,7 @@ NTL.phys.data.PeterPaul1 <- select(NTL.phys.data.PeterPaul1, lakeid:daynum, mont
 # find out the start and end dates of the dataset
 interval(NTL.phys.data.PeterPaul1$sampledate[1], NTL.phys.data.PeterPaul1$sampledate[21613])
 interval(first(NTL.phys.data.PeterPaul1$sampledate), last(NTL.phys.data.PeterPaul1$sampledate))
+
 ```
 
 

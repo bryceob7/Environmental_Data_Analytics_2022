@@ -19,7 +19,7 @@ Today we will work with a dataset from the [North Temperate Lakes Long-Term Ecol
 
 Opening discussion: why might we be interested in long-term observations of temperature, oxygen, and light in lakes?
 
-> Add notes here: 
+> Add notes here: long term observations are necessary for monitoring and better understanding certain ecological processes or changes.
 
 ```{r, message = FALSE}
 getwd()
@@ -32,6 +32,7 @@ NTL.phys.data <- read.csv("./Data/Raw/NTL-LTER_Lake_ChemistryPhysics_Raw.csv", s
 class(NTL.phys.data$sampledate)
 # Format sampledate as date
 NTL.phys.data$sampledate <- as.Date(NTL.phys.data$sampledate, format = "%m/%d/%y")
+class(NTL.phys.data$sampledate)
 ```
 
 
@@ -45,6 +46,7 @@ class(NTL.phys.data$depth)
 
 # dplyr filtering
 NTL.phys.data.surface <- filter(NTL.phys.data, depth == 0)
+view(NTL.phys.data.surface)
 
 # Choose multiple conditions to filter
 summary(NTL.phys.data$lakename)
@@ -58,11 +60,14 @@ NTL.phys.data.JunethruOctober <- filter(NTL.phys.data, daynum %in% c(152:304))
 # filter NTL.phys.data for the year 1999
 # what code do you need to use, based on the class of the variable?
 
+NTL.phys.data.1999 <- filter(NTL.phys.data, year4 %in% c(1999))
+(NTL.phys.data.1999$year4)
 
 # Exercise 2: 
 # filter NTL.phys.data for Tuesday Lake from 1990 through 1999.
 
-
+NTL.phys.data.Tuesday.Lake <- filter(NTL.phys.data, lakename %in% c("Tuesday Lake"))
+NTL.phys.data.Tuesday.Lake.90.to.99 <-filter(NTL.phys.data.Tuesday.Lake, year4 %in% c(1990:1999))
 ```
 Question: Why don't we filter using row numbers?
 

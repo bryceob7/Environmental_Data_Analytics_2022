@@ -68,7 +68,7 @@ Here are some commonly used layers for plotting in ggplot:
 ### Aesthetics
 Here are some commonly used aesthetic types that can be manipulated in ggplot: 
 
-* color
+* colorx
 * fill
 * shape
 * size
